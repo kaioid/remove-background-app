@@ -19,6 +19,7 @@ document.getElementById('imageInput').addEventListener('change', async function(
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Cors-Origin': '*',
                 },
                 body: JSON.stringify({ image: base64Image })
             });
