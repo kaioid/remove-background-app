@@ -1,4 +1,4 @@
-document.getElementById('imageInput').addEventListener('change', async function(event) {
+document.getElementById('imageInput').addEventListener('change', async function (event) {
     const file = event.target.files[0];
     const previewContainer = document.getElementById('previewContainer');
     const preview = document.getElementById('preview');
@@ -10,7 +10,7 @@ document.getElementById('imageInput').addEventListener('change', async function(
     }
 
     const reader = new FileReader();
-    reader.onloadend = async function() {
+    reader.onloadend = async function () {
         const base64Image = reader.result.split(',')[1];
 
         try {
@@ -41,6 +41,9 @@ document.getElementById('imageInput').addEventListener('change', async function(
                 a.download = 'image-removed-bg.png';
                 a.click();
             };
+
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'block';
         } catch (error) {
             console.error(error);
             alert('Erro ao processar a imagem');
@@ -49,4 +52,14 @@ document.getElementById('imageInput').addEventListener('change', async function(
     reader.readAsDataURL(file);
 });
 
-document.getElementById('preview').classList.add('hidden');
+document.querySelector('.close').onclick = function () {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'none';
+};
+
+window.onclick = function (event) {
+    const modal = document.getElementById('myModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+};
