@@ -29,9 +29,11 @@ document.getElementById('imageInput').addEventListener('change', async function(
             const blob = await response.blob();
             const url = URL.createObjectURL(blob);
 
+            const preview = document.getElementById('preview');
             preview.src = url;
             previewContainer.classList.remove('hidden');
 
+            const downloadButton = document.getElementById('downloadButton');
             downloadButton.disabled = false;
             downloadButton.onclick = () => {
                 const a = document.createElement('a');
